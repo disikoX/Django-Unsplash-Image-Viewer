@@ -5,36 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    
-    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet"  href=" {% static 'style.css' %} ">    
+     {% comment %} suffisait de faire ça  {% endcomment %}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bg"></div>
-    <div class="container">
-    <form action="/">
-        <div class="titre">
-        <h1>SE CONNECTER</h1>
-        </div>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="POST">
+        <h3>Login Here</h3>
 
+        <label for="username">Username</label>
+        <input type="text" placeholder="Email" id="username">
 
-        <div class="email">
-        <label for="E-mail">E-mail:</label>
-        <input type="text" name="E-mail" placeholder="Entrez votre E-mail">
-        </div>
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password">
 
-        <div class="mdp">
-        <label for="Password">Mot de passe:</label>
-        <input type="password" name="Mot de passe" placeholder="Entrez votre mot de passe">
-        </div>
+            
+            {% csrf_token %}
 
-        <div class="mdpf">
-        <a href="google.com">Mot de passe oublié</a></div>
-
+        <button>Log In</button>
+    </form>
         
-        <input type="submit" value="Se connecter" id="submit">
-        
-
-    </form></div>
-    
-</body>
 </html>
