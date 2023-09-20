@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . import forms
 from django.http import HttpResponse
+from .models import User
 
 # Create your views here.
 
@@ -11,13 +12,11 @@ def form_name_view(request):
     form = forms.FormName()
     
     if request.method == 'POST':
-        form = forms.FormName(request.POST)
+        email = request.POST['email']
+        password = request.POST['password']
         
-        if form.is_valid():
-            print("VALIDATION SUCCESS !")
-            print("EMAIL: "+form.cleaned_data['email'])
-            print("PASSWORD: "+form.cleaned_data['password'])
-
+        new_user = User(email=email,password=password)
+        new_user.save()
     
     
     return render(request,'templates/mainApp/form_page.html',{'form':form}) #Nom du fichier faux

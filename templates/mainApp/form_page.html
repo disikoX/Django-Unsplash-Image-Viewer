@@ -16,17 +16,14 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form method="POST">
+    <form method="POST">{% csrf_token %}
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Email" id="username">
+        <input type="text" placeholder="Email" id="username" name="email">
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
-
-            
-            {% csrf_token %}
+        <input type="password" placeholder="Password" id="password" name="password">
 
         <button>Log In</button>
     </form>
