@@ -1,7 +1,7 @@
 from django import forms
 
 class FormName(forms.Form):
-    email = forms.EmailField()
+    username = forms.CharField()
     password = forms.PasswordInput()
     botcatcher = forms.CharField(required = False,
                                   widget=forms.HiddenInput)

@@ -8,16 +8,16 @@ from django.http import JsonResponse
 # Create your views here.
 
 def index(request):
-    return render(request, 'templates/mainApp/index.html')
+    return render(request, 'templates/mainApp/form_page.html')
 
 def form_name_view(request):
     form = forms.FormName()
     
     if request.method == 'POST':
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
         
-        new_user = User(email=email,password=password)
+        new_user = User(username=username,password=password)
         new_user.save()
     
     
@@ -36,7 +36,7 @@ def Image(request):
     # Construct the URL with the API key in the request headers
     url = "https://api.unsplash.com/search/photos"
     headers = {
-        "Authorization": "Client-ID <wwxWk4-za9SCfQ09DnDGFLPEb9J9_5mLRSkRlikkD1Q>"
+        "Authorization": "Client-ID <API-key>"
     }
     params = {
         "query": query
