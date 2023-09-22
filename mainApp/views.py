@@ -5,10 +5,9 @@ from .models import User
 import requests
 from django.http import JsonResponse
 
-# Create your views here.
 
 def index(request):
-    return render(request, 'templates/mainApp/form_page.html')
+    return render(request, 'templates/mainApp/index.html')
 
 def form_name_view(request):
     form = forms.FormName()
@@ -23,33 +22,20 @@ def form_name_view(request):
     
     return render(request,'templates/mainApp/form_page.html',{'form':form}) #Nom du fichier faux
 
-#def Image(self,request,image):
-    url ="https://api.unsplash.com?q={}&appid=<Pydg9u8CGnUZ3VVpgrIXPU8Yrj77i2pfCvvIlJXyicc>".format(image)
-    response = requests.get(url)
-    data = response.json()
-    return JsonResponse(data)
+def random_image(request):
+       # Replace 'YOUR_UNSPLASH_ACCESS_KEY' with your actual Unsplash access key
+       access_key = 'Pydg9u8CGnUZ3VVpgrIXPU8Yrj77i2pfCvvIlJXyicc'
+       url = f'https://api.unsplash.com/photos/random?client_id={access_key}'
 
-def Image(request):
-    # Get the query parameter 'q' from the request's GET parameters
-    query = request.GET.get('q', '')  # Default to empty string if 'q' is not provided
+       response = requests.get(url)
+       data = response.json()
 
-    # Construct the URL with the API key in the request headers
-    url = "https://api.unsplash.com/search/photos"
-    headers = {
-        "Authorization": "Client-ID <API-key>"
-    }
-    params = {
-        "query": query
-    }
+       image_url = data['urls']['regular']
+       context = {'image_url': image_url}
 
-    # Send the GET request to Unsplash API
-    response = requests.get(url, headers=headers, params=params)
+       return render(request, 'index.html', context)
 
-    if response.status_code == 200:
-        data = response.json()
-        return JsonResponse(data)
-    else:
-        # Handle API error responses here
-        error_data = {"error": "Unable to fetch images"}
-        return JsonResponse(error_data, status=response.status_code)
+
+
+
 

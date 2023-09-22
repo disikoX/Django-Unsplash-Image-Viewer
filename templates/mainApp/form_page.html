@@ -16,7 +16,10 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form method="POST">{% csrf_token %}
+    <form action="{% url 'index' %}" method="POST">{% csrf_token %} 
+
+        {% comment %} suffisait de mettre action="{%url ''%}" {% endcomment %}
+
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
@@ -25,8 +28,10 @@
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password" name="password">
 
-        
+
             <button>Log In</button>
+        
+
     </form>
         
 </html>

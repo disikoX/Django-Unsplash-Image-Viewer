@@ -7,6 +7,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path("",views.form_name_view,name ='form_name'),
-    path("Image",views.Image,name='Image'),
+    path("index",views.index, name='index'),
 ]
 urlpatterns += staticfiles_urlpatterns("/static")
